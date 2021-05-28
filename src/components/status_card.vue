@@ -38,7 +38,7 @@ export default {
 .cardTemp {
   position: relative;
   font-size: 36px;
-  margin: 0px 0px;
+  margin: 0px;
 }
 
 .cardTemp::after {

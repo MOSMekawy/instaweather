@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <div id="wrapper">
+      <toggle-button id="unitToggle" optionA="C" optionB="F" v-model="unit" />
       <h1>INSTAWEATHER</h1>
       <status-report id="status" />
       <hourly-daily-report id="hdReport" />
@@ -9,14 +10,21 @@
 </template>
 
 <script>
+import toggle_button from "./components/toggle_button"; 
 import status_report from "./components/status_report";
 import hourly_daily_report from "./components/houry_daily_report";
 
 export default {
   name: "App",
+  data() {
+    return {
+      unit: true
+    };
+  },
   components: {
     "status-report": status_report,
     "hourly-daily-report": hourly_daily_report,
+    "toggle-button": toggle_button
   },
 };
 </script>
@@ -85,5 +93,11 @@ body {
   position: absolute;
   bottom: 0px;
   left: 0px;
+}
+
+#unitToggle {
+  position: absolute;
+  top: 0px;
+  right: 0px;
 }
 </style>
