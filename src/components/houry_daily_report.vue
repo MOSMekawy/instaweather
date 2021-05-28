@@ -1,6 +1,6 @@
 <template>
-  <div id="hdWrap">
-    <v-tabs id="hdTabs" background-color="transparent" color="white" dark>
+  <div class="hdWrap">
+    <v-tabs class="hdTabs" background-color="transparent" color="white" dark>
       <v-tab>Hourly</v-tab>
       <v-tab>Daily</v-tab>
     </v-tabs>
@@ -21,21 +21,18 @@ export default {
 </script>
 
 <style>
-#hdWrap {
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
+.hdWrap {
   width: 100%;
   height: 250px;
   border-top: 1px solid white;
   border-bottom: 1px solid white;
 }
 
-#hdWrap > .statusCard:first {
+.hdWrap > .statusCard:first {
   margin: 0px 14px 0px 40px;
 }
 
-#hdTabs {
+.hdTabs {
   position: absolute;
   top: 0px;
   left: 0px;

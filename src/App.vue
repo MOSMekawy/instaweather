@@ -2,8 +2,8 @@
   <v-app>
     <div id="wrapper">
       <h1>INSTAWEATHER</h1>
-      <status-report />
-      <hourly-daily-report />
+      <status-report id="status" />
+      <hourly-daily-report id="hdReport" />
     </div>
   </v-app>
 </template>
@@ -72,5 +72,18 @@ body {
   left: 0px;
   margin: 0px;
   padding: 0px;
+}
+
+#status {
+  position: absolute;
+  top: 212px;
+  left: 0px;
+  width: 100%;
+}
+
+#hdReport {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
 }
 </style>
