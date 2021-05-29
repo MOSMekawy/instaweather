@@ -157,25 +157,26 @@ img {
 
 @media only screen and (max-width: 720px) {
   #wrapper {
-    width: calc(100% - 76px);
-    height: calc(100% - 76px);
+    top: 25px;
+    width: calc(100% - 50px);
+    height: calc(100% - 50px);
   }
 
   #unitToggle {
     width: 75px;
     height: 28px;
-  }
+  } 
 
   #unitToggle span {
     font-size: 16px;
   }
 
   #status {
-    top: 80px;
+    top: 65px;
   }
 
   #appName {
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 </style>

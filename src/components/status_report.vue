@@ -200,7 +200,7 @@ export default {
 
   .gTemp {
     display: block;
-    margin: 10px 0px;
+    margin: 10px 0px 0px 0px;
     font-size: 80px;
     width: auto;
   }
@@ -213,6 +213,7 @@ export default {
   }
 
   .highLow {
+    margin: 0px 0px;
     font-size: 25px;
   }
 
@@ -231,6 +232,7 @@ export default {
   }
 
   .commentary {
+    margin: 10px 0px;
     font-size: 18px;
   }
 }
