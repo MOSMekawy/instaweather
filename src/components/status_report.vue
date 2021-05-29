@@ -227,7 +227,7 @@ export default {
 
   .icon {
     max-width: 150px;
-    margin-top: 15px;
+    margin-top: 0px;
   }
 
   .commentary {

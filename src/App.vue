@@ -142,36 +142,32 @@ img {
   user-select: none;
 }
 
-#unitToggle {
-  width: 75px;
-  height: 28px;
-}
-
-#unitToggle span {
-  font-size: 16px;
-}
-
 @media only screen and (min-height: 1000px) {
   #status {
     top: 220px;
   }
 }
 
-@media only screen and (max-height: 800px) {
-  #wrapper {
-    height: calc(100% - 76px);
-  }
-}
-
 @media (min-width: 721px) and (max-width: 1150px) {
   #wrapper {
     width: calc(100% - 100px);
+    height: calc(100% - 76px);
   }
 }
 
 @media only screen and (max-width: 720px) {
   #wrapper {
     width: calc(100% - 76px);
+    height: calc(100% - 76px);
+  }
+
+  #unitToggle {
+    width: 75px;
+    height: 28px;
+  }
+
+  #unitToggle span {
+    font-size: 16px;
   }
 
   #status {
