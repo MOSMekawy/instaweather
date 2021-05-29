@@ -1,19 +1,28 @@
 <template>
-  <div class="status">
-    <span class="city">New Cairo</span>
-    <span class="date">Friday 20th May 2020</span>
+  <div v-if="status.daily" class="status">
+    <div class="locale">
+      <span class="city">{{ status.area || "" }}</span>
+      <span class="date">{{ date }} </span>
+    </div>
     <div class="condition">
-      <img class="icon" src="../assets/cloudy.png" />
-      <span class="desc">Raining</span>
+      <img
+        class="icon"
+        :src="require(`../assets/${status.currently.icon}.png`)"
+      />
+      <span class="desc">{{ status.currently.summary }}</span>
     </div>
     <div class="temperature">
-      <span class="gTemp">702</span>
-      <p class="highLow">
-        <span class="high">800</span>
+      <span class="gTemp">{{ Math.round(status.currently.temperature) }}</span>
+      <div class="highLow">
+        <span class="high">{{
+          Math.round(status.daily.data[0].apparentTemperatureHigh)
+        }}</span>
         /
-        <span class="low">600</span>
-      </p>
-      <span class="commentary">Clear throughout the day</span>
+        <span class="low">{{
+          Math.round(status.daily.data[0].apparentTemperatureLow)
+        }}</span>
+      </div>
+      <div class="commentary">{{ status.daily.data[0].summary }}</div>
     </div>
   </div>
 </template>
@@ -21,11 +30,34 @@
 <script>
 export default {
   name: "status-report",
-  components: {},
+  props: {
+    status: {
+      type: Object,
+      required: true,
+    },
+  },
+  computed: {
+    date: function () {
+      let date;
+
+      if (this.$props.status.currently)
+        date = new Date(
+          this.$props.status.currently.time * 1000
+        ).toDateString();
+
+      return date || "";
+    },
+  },
 };
 </script>
 
 <style>
+.status {
+  white-space: nowrap;
+  line-height: normal;
+  width: 100%;
+}
+
 .city {
   margin: 0px 0px 15px 0px;
   font-size: 60px;
@@ -33,21 +65,27 @@ export default {
   letter-spacing: 5px;
 }
 
+.locale {
+  margin: 0px 0px 35px 0px;
+}
+
 .date {
   display: block;
   white-space: nowrap;
   font-size: 17px;
   letter-spacing: 2.5px;
-  margin: 0px 0px 40px 0px;
 }
 
 .condition,
 .icon {
+  display: block;
   width: 97px;
   height: auto;
+  margin: 0px;
 }
 
 .desc {
+  display: block;
   line-height: 45px;
   font-size: 25px;
   text-align: center;
@@ -56,10 +94,11 @@ export default {
 
 .temperature {
   position: absolute;
-  top: 20px;
+  top: 0px;
   right: 0px;
-  height: 100%;
   font-size: 144px;
+  white-space: nowrap;
+  text-align: right;
 }
 
 .gTemp {
@@ -69,20 +108,18 @@ export default {
 .gTemp::after {
   content: "°";
   position: absolute;
-  top: -30px;
+  top: -20px;
   right: -45px;
   font-size: 100px;
 }
 
 .highLow {
-  position: absolute;
-  top: 200px;
-  right: 0px;
   font-size: 48px;
   font-family: work-sans;
 }
 
-.high, .low {
+.high,
+.low {
   position: relative;
 }
 
@@ -98,11 +135,103 @@ export default {
 }
 
 .commentary {
-  position: absolute;
-  top: 280px;
-  right: 0px;
+  margin: 15px 0px;
   font-size: 24px;
   font-family: work-sans-medium;
-  white-space: nowrap;
+}
+
+@media only screen and (max-width: 1150px) {
+  .status {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .city {
+    font-size: 45px;
+    white-space: normal;
+  }
+
+  .date {
+    font-size: 14px;
+  }
+
+  .locale {
+    order: 1;
+    width: 100%;
+    margin: 0px;
+  }
+
+  .temperature {
+    order: 2;
+    position: relative;
+    text-align: left;
+    width: 60%;
+  }
+
+  .condition {
+    position: relative;
+    order: 3;
+    width: 39%;
+    margin: 10px auto;
+    text-align: right;
+  }
+
+  .icon {
+    width: 100%;
+    max-width: 240px;
+    display: inline;
+  }
+
+  .desc {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .city {
+    font-size: 25px;
+  }
+  .date {
+    margin: 8px 0px 0px 0px;
+    font-size: 13px;
+  }
+
+  .gTemp {
+    display: block;
+    margin: 10px 0px;
+    font-size: 80px;
+    width: auto;
+  }
+
+  .gTemp::after {
+    position: relative;
+    top: -30px;
+    right: 0px;
+    font-size: 60px;
+  }
+
+  .highLow {
+    font-size: 25px;
+  }
+
+  .highLow span::after {
+    top: -10px;
+    right: -10px;
+  }
+
+  .condition {
+    margin: 0px;
+  }
+
+  .icon {
+    max-width: 150px;
+    margin-top: 15px;
+  }
+
+  .commentary {
+    font-size: 18px;
+  }
 }
 </style>
