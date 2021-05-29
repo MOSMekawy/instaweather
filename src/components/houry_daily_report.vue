@@ -12,7 +12,7 @@
     </v-tabs>
 
     <div class="anotherWrap">
-      <transition name="slide-x-transition">
+      <transition name="fade">
         <div v-if="tab === 0" class="anotherCardContainer" key="hourly">
           <div class="cardContainer">
             <status-card
@@ -142,5 +142,20 @@ export default {
   .v-tab {
     font-size: 15px !important;
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transform: translateZ(0);
+  transition: opacity 0.1s ease-in-out;
+}
+.fade-enter-to,
+.fade-leave {
+  opacity: 1;
+}
+
+.fade-leave-to,
+.fade-enter {
+  opacity: 0;
 }
 </style>
