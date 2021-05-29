@@ -1,7 +1,7 @@
 <template>
   <div v-if="status.daily" class="status">
     <div class="locale">
-      <span class="city">{{ status.area || "" }}</span>
+      <span class="city">{{ status.area.results[2].address_components[0].short_name }}</span>
       <span class="date">{{ date }} </span>
     </div>
     <div class="condition">
