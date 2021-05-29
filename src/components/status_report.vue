@@ -180,7 +180,7 @@ export default {
 
   .icon {
     width: 100%;
-    max-width: 240px;
+    max-width: 200px;
     display: inline;
   }
 
@@ -233,7 +233,9 @@ export default {
 
   .commentary {
     margin: 10px 0px;
+    width: calc(100vw - 50px);
     font-size: 18px;
+    white-space: normal;
   }
 }
 </style>
